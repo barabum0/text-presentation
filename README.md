@@ -2,3 +2,6 @@
 
 ## `mid_screen_print.py`
 #### Постепенно выводит текст по середине экрана, случайно подбирая каждый символ
+
+https://github.com/barabum0/text-presentation/assets/100563680/19d28247-e068-4f52-93dd-324769fce6f3
+
