@@ -1,6 +1,6 @@
 # нужные вам настройки
-text_to_find = "текст, который вы хотите напечатать"
-symbol_print_func = lambda sym: sym
+text_to_find = "люблю всех, кто подписан на меня на гитхабе!!! ❤ ❤ ❤"
+symbol_print_func = lambda sym: sym.replace("❤", ":heart:")
 
 # symbol_print_func - функция, с которой будут выводиться печатаемые символы
 
@@ -15,9 +15,7 @@ from time import sleep
 from rich.console import Console
 from rich.control import Control
 
-letters = string.punctuation + string.ascii_letters + "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-
-letters += text_to_find
+letters = string.punctuation + string.ascii_letters + "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" + text_to_find
 letters += letters.upper()
 
 unique_letters = list(set(letters))
@@ -33,12 +31,12 @@ console.clear()
 for index, symbol in enumerate(text_to_find):
     found: str = ""
     while symbol != found:
-        found = symbol_print_func(choice(unique_letters))
+        found = choice(unique_letters)
         console.control(Control.move_to(x=start_x+index, y=start_y))
-        console.print(f"[black on white]{found}", end="")
+        console.print(f"[black on white]{symbol_print_func(found)}", end="")
         sleep(0.001)
 
     console.control(Control.move_to(x=start_x+index, y=start_y))
-    console.print(f"{found}", end="")
+    console.print(f"{symbol_print_func(found)}", end="")
 
 print("\n" * (console.size.height-start_y-3), end="")
